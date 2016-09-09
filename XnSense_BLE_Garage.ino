@@ -14,7 +14,6 @@
 
 #include "Keypad.h"
 #include <Arduino.h>
-#include "DHT.h"
 #include <SPI.h>
 #if not defined (_VARIANT_ARDUINO_DUE_X_) && not defined (_VARIANT_ARDUINO_ZERO_)
   #include <SoftwareSerial.h>
@@ -30,9 +29,6 @@
 #define MINIMUM_FIRMWARE_VERSION    "0.6.6"
 #define MODE_LED_BEHAVIOUR          "MODE"
 #define VBATPIN A9
-
-#define DHTTYPE DHT11
-#define DHTPIN A4
 
 #define garageRelay A0
 #define garageMagnetStatus A5
@@ -90,7 +86,8 @@ void setup(void)
   }
   ble.echo(false);
   ble.info();
-  if (! ble.sendCommandCheckOK(F("AT+GAPDEVNAME=XnSenseBLE-Garage")) ) {
+  //Set BLE Name
+  if (! ble.sendCommandCheckOK(F("AT+GAPDEVNAME=BLE-Garage")) ) {
     Serial.println(F("Failed to set name"));
   }
   //Set BLE Powerlevel
@@ -164,11 +161,6 @@ void loop(void)
 //    }
   }
 
-  //Send Temp and Humitity to BLE device if connected, every 30 minutes
-  if (millis() - lastConnectionTime > postingInterval) {
-    sendTempAndHumToBle();
-  }
-
   // Get received data from Ble
   getBleIncommingData();
 }
@@ -200,65 +192,14 @@ void getBleIncommingData(){
   ble.waitForOK();
 }
 
-void sendTempAndHumToBle(){
-  
-//  // Sensor readings may also be up to 2 seconds 'old' (its a very slow sensor)
-//  float h = dht.readHumidity();
-//  // Read temperature as Celsius (the default)
-//  float t = dht.readTemperature();
-//  // Read temperature as Fahrenheit (isFahrenheit = true)
-//  float f = dht.readTemperature(true);
-//
-//  if (isnan(h) || isnan(t) || isnan(f)) {
-//    Serial.println("Failed to read from DHT sensor!");
-//    delay(1000);
-//    return;
-//  }else{
-//      // Compute heat index in Fahrenheit (the default)
-//      float hif = dht.computeHeatIndex(f, h);
-//      // Compute heat index in Celsius (isFahreheit = false)
-//      float hic = dht.computeHeatIndex(t, h, false);
-//      if(ble.isConnected()){
-//        
-//        String tempAsString;
-//        String humAsString;
-//        tempAsString = String(t);
-//        humAsString = String(h);
-//
-//        ble.println("AT+BLEUARTFIFO=TX");
-//        ble.readline();
-//        //Serial.print(F("[Buffer] ")); Serial.println(ble.buffer);
-//        if (strcmp(ble.buffer, "OK") == 0) {
-//          // no data, proceed with sending data without a small SW delay
-//        }else{
-//          ble.waitForOK();
-//          // Some data was found, its in the buffer
-//          Serial.print(F("[Buffer] ")); Serial.println(ble.buffer);
-//          delay(500);
-//        };
-//
-//        //Send Temperature value from AnalogPin out on BLE
-//        ble.print("AT+BLEUARTTX=");
-//        ble.println("{GarageTemp:"+tempAsString+"}");
-//        delay(1000);
-//        ble.print("AT+BLEUARTTX=");
-//        ble.println("{GarageHum:"+humAsString+"}");
-//        delay(1000);
-//        ble.waitForOK();
-//      }
-//  }
-//  // note the time that the connection was made:
-//  lastConnectionTime = millis();
-}
-
 void sendStatusToBle(bool garageStatus){
   if(ble.isConnected()){    
     //Send Temperature value from AnalogPin out on BLE
     ble.print("AT+BLEUARTTX=");
     if(garageStatus == LOW){
-      ble.println("{GarageDoor:0}");
+      ble.println("{GarageDoor:Down}");
     }else{
-      ble.println("{GarageDoor:1}");
+      ble.println("{GarageDoor:Up}");
     }
     delay(1000);
     ble.waitForOK();
