@@ -17,9 +17,10 @@
 #define MODE_LED_BEHAVIOUR          "MODE"
 #define VBATPIN A9
 
+//Set the GPIO that the Relay Feather Wing is Connected too
 #define garageRelay A0
+//Set the GPIO that the Magnet is Connected too
 #define garageMagnetStatus A5
-/*=========================================================================*/
 
 unsigned long lastConnectionTime = 0;            // last time we connected to the server, in milliseconds
 const unsigned long postingInterval = 30L * 1000L; // delay between updates, in milliseconds
