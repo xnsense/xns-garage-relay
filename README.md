@@ -20,7 +20,7 @@ Membrane 3X4 Matrix KeyPad
 Network Cable (TP) or other cable with 7 wires
 
 #Relay Setup
-Find the input source on the garage port
+Find the input source on the garage port and wire it to the Feather Mini Relay (NOTE: Check the Garage Door Datasheet first to make sure you connect the correct input and that the Feather Mini Relay can handle the load, see Adafruit product link for details)
 
 
 #KeyPad Setup
