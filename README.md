@@ -8,6 +8,8 @@ Requires Arduino version 1.6.4 or higher
 
 [Requires Membrane 3x4 Matrix KeyPad] (https://www.adafruit.com/products/419)
 
+Optional: Magnetic contact switch
+
 My goal was to create an simple solution so the kids could use an KeyPad to open the Garage door. 
 
 #Setup:
@@ -21,6 +23,11 @@ Network Cable (TP) or other cable with 7 wires
 
 #Relay Setup
 Find the input source on the garage port and wire it to the Feather Mini Relay (NOTE: Check the Garage Door Datasheet first to make sure you connect the correct input and that the Feather Mini Relay can handle the load, see Adafruit product link for details)
+
+Solder an wire from SET pin to your prefered GPIO (Mine: 0)
+
+#Magnetic contact switch Setup
+I choose to add an Magnetc contact to the setup so I can query the door status through BLE. Connect one wire to GND and the other to GPIO 5
 
 
 #KeyPad Setup
