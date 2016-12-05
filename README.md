@@ -9,6 +9,7 @@ Requires Arduino version 1.6.4 or higher
 [Requires Membrane 3x4 Matrix KeyPad] (http://www.xnsense.no/product-page/0f418644-bfb9-f2e8-8f2c-6acad78df267)
 
 [Optional: Magnetic contact switch] (http://www.xnsense.no/product-page/365bc775-8778-c8aa-6a28-b97bd0168d1c)
+[Optional: Box] (http://www.xnsense.no/product-page/a16cff8d-4411-0be9-3b90-e9a75275c1dc)
 
 My goal was to create an simple solution so the kids could use an KeyPad to open the Garage door. 
 
