@@ -1,14 +1,14 @@
 # xns-garage-relay
 
-This library is for Adafruit Feather 32uF Bluefruit LE (https://www.adafruit.com/products/2829)
+This library is for Adafruit Feather 32uF Bluefruit LE (http://www.xnsense.no/product-page/31bd7d04-8b25-3bc4-8551-c8b5a67e70f6)
 
 Requires Arduino version 1.6.4 or higher
 
 [Requires Adafruit nRF51 BLE Library](https://github.com/adafruit/Adafruit_BluefruitLE_nRF51)
 
-[Requires Membrane 3x4 Matrix KeyPad] (https://www.adafruit.com/products/419)
+[Requires Membrane 3x4 Matrix KeyPad] (http://www.xnsense.no/product-page/0f418644-bfb9-f2e8-8f2c-6acad78df267)
 
-Optional: Magnetic contact switch
+[Optional: Magnetic contact switch] (http://www.xnsense.no/product-page/365bc775-8778-c8aa-6a28-b97bd0168d1c)
 
 My goal was to create an simple solution so the kids could use an KeyPad to open the Garage door. 
 
