@@ -1,6 +1,6 @@
 # xns-garage-relay
 
-This library is for Adafruit Feather 32uF Bluefruit LE (http://www.xnsense.no/product-page/31bd7d04-8b25-3bc4-8551-c8b5a67e70f6)
+[This library is for Adafruit Feather 32uF Bluefruit LE] (http://www.xnsense.no/product-page/31bd7d04-8b25-3bc4-8551-c8b5a67e70f6)
 
 Requires Arduino version 1.6.4 or higher
 
